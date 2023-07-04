@@ -53,7 +53,7 @@ export default function ToDO({
         {item.task}
       </p>
       <img
-        src="../images/icon-cross.svg"
+        src="images/icon-cross.svg"
         alt="delete-icon"
         className="icon-cross"
         onClick={() => onDelete(item.id)}
