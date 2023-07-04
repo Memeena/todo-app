@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Screenshot
 
-![](./Desktop-Screenshot-todo-app.png)
-![](./Mobile-Screenshot-todo-app.png)
+![](./Desktop-screenshot-todo-app.png)
+![](./Mobile-screenshot-todo-app.png)
 
 ### Links
 
