@@ -1,38 +1,322 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+body {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  width: 375px;
+  background-image: url("../public/images/bg-mobile-light.jpg");
+  background-size: 375px;
+  background-position: top;
+  background-color: #f2f2f2;
+  background-repeat: no-repeat;
+  font-family: "Josefin Sans", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+}
+
+.dark-bg {
+  background-image: url("../public//images/bg-mobile-dark.jpg");
+  background-color: #171823;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 37.5rem;
+  padding: 2rem;
+  padding-top: 4rem;
+}
+
+.heading {
+  font-size: 2.5rem;
+  letter-spacing: 1rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.get-input {
+  display: block;
+  align-self: center;
+  justify-self: center;
+  padding-top: 2rem;
+}
+
+.input {
+  height: 4.8rem;
+  width: 32.7rem;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  padding-left: 5rem;
+  padding-top: 0.5rem;
+  font-size: 1.2rem;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 500;
+}
+::placeholder {
+  color: #9495a5;
+}
+
+.input-dark-mode::placeholder,
+.input-dark-mode {
+  color: #c8cbe7;
+}
+.get-input {
+  position: relative;
+}
+
+.round {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  background-color: white;
+  border: 3px solid #e4e5f1;
+  position: absolute;
+  top: 4.3rem;
+  left: 1.5rem;
+}
+
+.round-dark-mode {
+  background-color: #25273d;
+  border: 2px solid #393a4b;
+}
+.todo-list {
+  display: grid;
+  grid-template-rows: 1fr min-content;
+  grid-template-columns: 1fr 1fr;
+  padding: 2rem 0;
+  border-radius: 5px;
+  gap: 2rem;
+  background-color: white;
+  width: 32.7rem;
+  margin-top: 2rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.icon-mode {
+  cursor: pointer;
+}
+
+.list {
+  grid-row: 1/2;
+  grid-column: 1/-1;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.todo-list-dark,
+.no-task-dark {
+  background-color: #25273d;
+  color: #c8cbe7;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.task-item {
+  display: grid;
+  grid-template-columns: 2rem 1fr min-content;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e2e4f1;
+  position: relative;
+  user-select: none;
+}
+
+li input {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #e2e4f1;
+  transform: translateY(5px);
+}
+
+.checkmark-dark {
+  background-color: #25273d;
+  border: 1px solid #393a4b;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  border-image: linear-gradient(to right bottom, #55ddff, #c058f3) 1 20%;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-image: linear-gradient(to right bottom, #55ddff, #c058f3);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  color: red;
+}
+
+.radio {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.task {
+  font-size: 1.2rem;
+  color: #494c6b;
+}
+
+.task-dark {
+  color: #c8cbe7;
+}
+.icon-cross {
+  width: 1.1rem;
+  height: 1.1rem;
+  cursor: pointer;
+}
+
+.left-items,
+.clear-completed {
+  color: #9495a5;
+  font-size: 1.4rem;
+  padding-left: 3rem;
+  cursor: pointer;
+}
+
+.left-items-dark,
+.clear-completed-dark {
+  color: #5b5e7e;
+}
+
+.filter {
+  list-style: none;
+  background-color: white;
+  border-radius: 5px;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 90%;
+  color: #9495a5;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 2rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.filter-item:hover,
+.filter-item:visited {
+  color: #3a7cfd;
+}
+
+.filter-dark {
+  background-color: #25273d;
+  color: #5b5e7e;
+}
+
+.no-task {
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #494c6b;
+}
+
+@media screen and (min-width: 31.25em) {
+  .App {
+    width: 1440px;
+    background-image: url("../public/images/bg-desktop-light.jpg");
+    background-size: 1440px;
+    height: 100vh;
+    padding-top: 4rem;
   }
-  to {
-    transform: rotate(360deg);
+  .dark-bg {
+    background-image: url("../public//images/bg-desktop-dark.jpg");
+  }
+  .header {
+    width: 1440px;
+    justify-content: center;
+    gap: 40rem;
+  }
+
+  .input {
+    width: 54rem;
+    height: 6.4rem;
+    font-size: 1.8rem;
+  }
+
+  .todo-list {
+    width: 54rem;
+    font-size: 1.8rem;
+
+    grid-template-rows: min-content 1fr min-content;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+  }
+
+  .filter {
+    margin: 0;
+    box-shadow: none;
+    background-color: transparent;
+    border-radius: 0px;
+    padding: 0;
+  }
+
+  .task {
+    font-size: 1.8rem;
+  }
+
+  .left-items,
+  .clear-completed,
+  .filter {
+    font-size: 1.4rem;
   }
 }
